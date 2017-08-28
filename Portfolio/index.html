@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RH</title>
+	
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--jCanvas CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+</head>
+
+
+
+<body>
+<!--placeholder image-->
+<img class="background" src="http://medias.photodeck.com/b17280fd-3649-4f15-adc9-45d09216cebf/140727-0058_PIER_7_AT_NIGHT_SAN_FRANCISCO_SKYLINE_BLACK_AND_WHITE_xgaplus.jpg">
+	<!--<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="brand">Raymond Hui</div>
+				</div>
+			</div>
+			<a href="" class="">Placeholder</a>
+		</div>
+	</header>-->
+	 
+	<!--<div>Add Video shit to background</div>-->
+
+	<div class="container">
+		<div class="col-lg-12">
+			<div id="canvas-holder"> <!--w620 h545-->
+				<canvas id="triforce" width='720' height='645'></canvas>
+				<div class='about -text'> About </div>
+				<div class='work -text'> Work </div>
+				<div class='blog -text'> Blog </div>
+			
+			
+		</div>
+	</div>
+
+
+<script>
+	$('canvas').drawVector({ //Angles are always default 0 degrees, not relative.
+		layer:true,
+		strokeStyle: 'white',
+		name: 'triTop',
+		groups: ['triforce'],
+		strokeWidth: 12,
+		x:360, y:65, //3
+		a1:150, l1:0,
+		a2:270, l2:00,
+		a3:30, l3:0
+	}).drawVector({
+		layer:true,
+		strokeStyle: 'white',
+		name: 'triRight',
+		groups: ['triforce'],
+		strokeWidth: 12,
+		x:660, y:585, //523
+		a1:270, l1:0,
+		a2:30, l2:0,
+		a3:150, l3:0
+	}).drawVector({
+		layer:true,
+		strokeStyle: 'white',
+		name: 'triLeft',
+		groups: ['triforce'],
+		strokeWidth: 12,
+		x:60, y:585, //523
+		a1:30, l1:0,
+		a2:150, l2:0,
+		a3:270, l3:0
+	});
+
+	//Animate layer
+	$('canvas').animateLayerGroup('triforce', {
+	 	l1:300
+	},1250).animateLayerGroup('triforce', {
+		l2:300
+	},1250).animateLayerGroup('triforce', {
+		l3:300
+	},1250).animateLayerGroup('triforce', {
+		closed:true
+	});
+
+
+
+
+	//infunction, outfunction
+	var hoverOn = 1;
+
+	if (hoverOn === 1){
+		$('.about').hover(function(){
+			hoverOn = 0;
+			console.log(hoverOn);
+			$('canvas').animateLayer('triTop', { y:15 }, 500 );
+			
+			}, function(){ //about hover }
+				$('canvas').animateLayer('triTop', { y:65 }, 500 );
+				// setTimeout(function(){
+				// 	hoverOn = true;
+				// 	console.log('wait');
+				// }, 1000);
+			} //outfunction
+	
+		);//about function
+	}//if
+	else if(hoverOn === 0){
+		console.log('offzzz!')
+	} 
+
+
+
+
+	$('.blog').hover(function(){
+		console.log('yay');
+		$('canvas').animateLayer('triRight', { x:710, y:635 }, 500 );
+		}, function(){
+			$('canvas').animateLayer('triRight', { x:660, y:585 }, 500 );
+		});
+
+	$('.work').hover(function(){
+		console.log('yay');
+		$('canvas').animateLayer('triLeft', { x:10, y:635 }, 500 );
+		}, function(){
+			$('canvas').animateLayer('triLeft', { x:60, y:585 }, 500 );
+		});
+
+
+</script>
+
+
+
+</body>
+</html>
