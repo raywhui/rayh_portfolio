@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>RH</title>
-	
+	<!--What is the difference between a frontend framework and a boilerplate?-->
 	<script
   src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
@@ -18,7 +18,7 @@
 
 <body>
 <!--placeholder image-->
-<img class="background" src="http://medias.photodeck.com/b17280fd-3649-4f15-adc9-45d09216cebf/140727-0058_PIER_7_AT_NIGHT_SAN_FRANCISCO_SKYLINE_BLACK_AND_WHITE_xgaplus.jpg">
+<img class="background" src="https://cdn.pixabay.com/photo/2017/02/10/22/14/city-2056465_960_720.jpg">
 	<!--<header>
 		<div class="container">
 			<div class="row">
@@ -36,9 +36,13 @@
 		<div class="col-lg-12">
 			<div id="canvas-holder"> <!--w620 h545-->
 				<canvas id="triforce" width='720' height='645'></canvas>
-				<div class='about -text'> About </div>
+				<img class='red test' src='./assets/media/red_image.png'>
+				<img class='blue test' src='./assets/media/blue_image.png'>
+				<img class='green test' src='./assets/media/green_image.png'>
+				<!--image made with Gimp, color->desaturate then hue-sat-->
+	<!--			<div class='about -text'> About </div>
 				<div class='work -text'> Work </div>
-				<div class='blog -text'> Blog </div>
+				<div class='blog -text'> Blog </div> -->
 			
 			
 		</div>
@@ -55,7 +59,17 @@
 		x:360, y:65, //3
 		a1:150, l1:0,
 		a2:270, l2:00,
-		a3:30, l3:0
+		a3:30, l3:0,
+			mouseover: function() {
+   		$('canvas').animateLayer('triTop', { strokeWidth: 18, y:21, opacity: 1, strokeStyle: '#CF0123' }, 500 
+   			).animateLayer('about', { y:176, opacity: 1 }, 500);
+  		},
+
+  		mouseout: function(){ //about hover }
+			$('canvas').animateLayer('triTop', { strokeWidth: 12, y:65, opacity: 0.6, strokeStyle: 'white' }, 500 
+				).animateLayer('about', { y:220, opacity: 0 }, 500);
+			} //outfunction
+
 	}).drawVector({
 		layer:true,
 		strokeStyle: 'white',
@@ -65,7 +79,17 @@
 		x:660, y:585, //523
 		a1:270, l1:0,
 		a2:30, l2:0,
-		a3:150, l3:0
+		a3:150, l3:0,
+			mouseover:function(){
+			$('canvas').animateLayer('triRight', { strokeWidth: 18, strokeStyle: '#0AB831', x:704, y:613, opacity: 1 }, 500 
+				).animateLayer('blog', { x: 555, y: 544, opacity: 1 }, 500);
+			}, 
+
+			mouseout: function(){
+			$('canvas').animateLayer('triRight', { strokeWidth: 12, strokeStyle:'white', x:660, y:585, opacity: 0.6 }, 500 
+				).animateLayer('blog', {  x: 510, y: 500, opacity: 0 }, 500);
+			}
+
 	}).drawVector({
 		layer:true,
 		strokeStyle: 'white',
@@ -73,10 +97,50 @@
 		groups: ['triforce'],
 		strokeWidth: 12,
 		x:60, y:585, //523
-		a1:30, l1:0,
+		a1:30, l1:0, //44  
 		a2:150, l2:0,
-		a3:270, l3:0
-	});
+		a3:270, l3:0,
+			mouseover:function(){
+			$('canvas').animateLayer('triLeft', { strokeWidth: 18, strokeStyle: '#0E7FD6', x:16, y:613, opacity: 1 }, 500 
+				).animateLayer('work', { x: 166, y: 544, opacity: 1 }, 500);
+			},
+
+		 mouseout: function(){
+			$('canvas').animateLayer('triLeft', { strokeWidth: 12, strokeStyle: 'white', x:60, y:585, opacity: 0.6 }, 500 
+				).animateLayer('work', { x: 210, y: 500, opacity: 0 }, 500);
+		}
+
+	}).drawText({
+		layer:true,
+		groups: ['words'],
+		name: 'about',
+	  fillStyle: 'white',
+	  x: 350, y: 220,
+	  fontSize: '30pt',
+	  opacity:0,
+	  fontFamily: 'Nothing You Could Do',
+	  text: 'About'
+	}).drawText({
+		layer:true,
+		groups: ['words'],
+		name: 'work',
+	  fillStyle: 'white',
+	  x: 210, y: 500,
+	  fontSize: '30pt',
+	  opacity:0,
+	  fontFamily: 'Nothing You Could Do',
+	  text: 'Work'
+	}).drawText({
+		layer:true,
+		groups: ['words'],
+		name: 'blog',
+	  fillStyle: 'white',
+	  x: 510, y: 500,
+	  fontSize: '30pt',
+	  opacity:0,
+	  fontFamily: 'Nothing You Could Do',
+	  text: 'Blog'
+});
 
 	//Animate layer
 	$('canvas').animateLayerGroup('triforce', {
@@ -86,51 +150,51 @@
 	},1250).animateLayerGroup('triforce', {
 		l3:300
 	},1250).animateLayerGroup('triforce', {
-		closed:true
-	});
+		opacity: 0.6,
+		closed:true,
+	}).animateLayerGroup('words', {
+		opacity:0
+	},3750).animateLayerGroup('words', {
+		opacity:0
+	},1250);
 
 
+	//drawText
+	// $('canvas').drawText({
+	// 	fillStyle: '#9cf',
+	// 	strokeStyle: '#25a',
+	// 	strokeWidth: 2,
+	// 	x: 150, y: 100,
+	// 	fontSize: 48,
+	// 	fontFamily: 'Verdana, sans-serif',
+	// 	text: 'Hello'
+	// });
 
 
-	//infunction, outfunction
-	var hoverOn = 1;
-
-	if (hoverOn === 1){
-		$('.about').hover(function(){
-			hoverOn = 0;
-			console.log(hoverOn);
-			$('canvas').animateLayer('triTop', { y:15 }, 500 );
-			
-			}, function(){ //about hover }
-				$('canvas').animateLayer('triTop', { y:65 }, 500 );
-				// setTimeout(function(){
-				// 	hoverOn = true;
-				// 	console.log('wait');
-				// }, 1000);
-			} //outfunction
+//infunction, outfunction
+	//about hover
+	// $('.about').hover(function(){
+	// 	$('canvas').animateLayer('triTop', { strokeWidth: 18, y:21, opacity: 1 }, 500 );
+	// }, function(){ //about hover }
+	// 	$('canvas').animateLayer('triTop', { strokeWidth: 12, y:65, opacity: 0.6 }, 500 );
+	// 	} //outfunction
+	// );//about function		
 	
-		);//about function
-	}//if
-	else if(hoverOn === 0){
-		console.log('offzzz!')
-	} 
+	//work hover
+	// $('.work').hover(function(){
+	// 	$('canvas').animateLayer('triLeft', { strokeWidth: 18, x:16, y:629, opacity: 1 }, 500 );
+	// 	}, function(){
+	// 		$('canvas').animateLayer('triLeft', { strokeWidth: 12, x:60, y:585, opacity: 0.6 }, 500 );
+	// 	});
+
+	//blog hover
+	// $('.blog').hover(function(){
+	// 	$('canvas').animateLayer('triRight', { strokeWidth: 18, x:704, y:629, opacity: 1 }, 500 );
+	// 	}, function(){
+	// 		$('canvas').animateLayer('triRight', { strokeWidth: 12, x:660, y:585, opacity: 0.6 }, 500 );
+	// 	});
 
 
-
-
-	$('.blog').hover(function(){
-		console.log('yay');
-		$('canvas').animateLayer('triRight', { x:710, y:635 }, 500 );
-		}, function(){
-			$('canvas').animateLayer('triRight', { x:660, y:585 }, 500 );
-		});
-
-	$('.work').hover(function(){
-		console.log('yay');
-		$('canvas').animateLayer('triLeft', { x:10, y:635 }, 500 );
-		}, function(){
-			$('canvas').animateLayer('triLeft', { x:60, y:585 }, 500 );
-		});
 
 
 </script>

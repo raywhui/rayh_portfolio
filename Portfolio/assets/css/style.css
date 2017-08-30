@@ -8,13 +8,15 @@ body{
 	width:100%;
 	height:100%;
 	opacity:0.5;
+	z-index: -1;
 }
 
-#triforce{	
+canvas#triforce{	
 	border: 1px white solid;
+	background-color: transparent;
 	display:block;
 	margin: 10% auto 0 auto;
-	opacity: 0.7;
+	z-index: 2;
 }
 
 #canvas-holder{
@@ -24,31 +26,52 @@ body{
 	margin: 0 auto;
 }
 
-.-text{
+/*.-text{
 	position: absolute;
 	color:white;
-	border: 1px blue white;
+	border: 1px white solid;
+  padding: 63px 18px;
 	font-family: 'Nothing You Could Do', cursive;
 	font-size: 24pt;
 	font-weight: 900;
 	z-index:1;
 	opacity: 0.7;
-}
+}*/
 
 .about{
-	right: 323px;
-  top: 208px;
+  right: 304px;
+  top: 160px;
 }
 
 .work{
-	left:0;
-	bottom:0;
+  left: 156px;
+  bottom: 74px;
 }
 
 .blog{
-	right:0;
-	bottom:0;
+	right:160px;
+	bottom:74px;
 }
-#canvas-holder{
 
+img.test{
+	width: 291px; 
+	height: 257px;
+	position:absolute;
+	clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+	z-index: -1;
+}
+
+.red{
+  top: 27px;
+  right: 213px;
+}
+
+.blue{
+	bottom: 35px;
+  left: 20px;
+}
+
+.green{
+  bottom: 35px;
+  right: 20px;
 }
