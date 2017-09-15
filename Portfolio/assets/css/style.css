@@ -1,3 +1,142 @@
+/*Header and Footer Fixed*/
+.fixed{
+	font-family: 'Oswald', sans-serif;
+	height:70px;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/*Header*/
+.-header{
+	border-bottom: white 1px solid;
+}
+
+.brand{
+	color:white;
+	display: inline-block;
+/*	padding-left: 200px;*/
+/*	font-weight: 100;*/
+	font-size: 48pt;
+	height:100%;
+}
+
+/*.line{
+	position: absolute;
+  left: 213px;
+  top: 31px;
+  width: 132px;
+  height: 5px;
+  background-color: white;
+}*/
+
+.menu{
+/*	position: absolute;
+	right:200px;
+	top:15px;*/
+	margin: 14px auto 0 auto;
+	height:100%;
+	float:right;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.bar{
+	width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.head-container{
+	height:70px;
+}
+
+/*div.bar.one{
+	background-color: #CF0123;
+}
+
+div.bar.two{
+	background-color: #0E7FD6;
+}
+
+div.bar.three{
+	background-color: #0AB831;
+}*/
+
+
+/*Footer*/
+.-footer{
+	position:fixed;
+	width:100%;
+	bottom:0;
+	border-top: white 1px solid;
+}
+
+.bottom-cr{
+	display: block;
+	font-size: 10pt;
+	color:white;
+	margin-top:25px;
+/*	padding: 30px 0 0 200px;*/
+}
+
+.contact-section{
+	float:right;
+	width:105px;
+	margin-top: 4px;
+
+}
+
+.contacts{
+	float:right;
+	color:white;
+	padding:4px 0 9px 0;
+}
+
+.icon{
+	float: left;
+	width:25px;
+	height:25px;
+	margin: 0 5px;
+}
+
+.github{
+	margin-left: 0px;
+}
+
+.github:hover{
+	opacity:0.5;
+	animation: fadeout 0.5s;
+	cursor:pointer;
+}
+
+.linkedin:hover{
+	opacity:0.5;
+	animation: fadeout 0.5s;
+	cursor:pointer;
+}
+
+.email{
+  margin: 3px 0 0 5px;
+}
+
+.email:hover{
+	opacity:0.5;
+	animation: fadeout 0.5s;
+	cursor:pointer;
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0.5; }
+}
+.icon-holder{
+	float:right;
+	padding-top: 4px;
+	border-top:1px solid white;
+}
+
+/*Body*/
 body{
 	height:100%;
 	background-color: black;
@@ -11,11 +150,13 @@ body{
 	z-index: -1;
 }
 
+
+/*Triforce Canvas White*/
 canvas#triforce{	
-	border: 1px white solid;
+	/*border: 1px white solid;*/
 	background-color: transparent;
 	display:block;
-	margin: 10% auto 0 auto;
+	margin: 1% auto 0 auto;
 	z-index: 2;
 }
 
@@ -53,6 +194,8 @@ canvas#triforce{
 	bottom:74px;
 }
 
+
+/*Triangle Images*/
 img.test{
 	width: 291px; 
 	height: 257px;
@@ -74,4 +217,18 @@ img.test{
 .green{
   bottom: 35px;
   right: 20px;
+}
+
+.flex-container{ /*remove flex when @1200px width for*/
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+
+.panel{
+	border: 1px white solid;
+	margin:34px 0 3% 0;
+	min-height: 589px;
+	background-color:transparent;
 }
