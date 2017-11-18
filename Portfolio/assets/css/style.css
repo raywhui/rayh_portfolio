@@ -1,7 +1,12 @@
 /*Header and Footer Fixed*/
+body{
+	font-family: 'Oswald', sans-serif;
+	color:white;
+}
+
 .fixed{
 	font-family: 'Oswald', sans-serif;
-	height:70px;
+	height:100px;
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -72,6 +77,10 @@ div.bar.three{
 	border-top: white 1px solid;
 }
 
+.bottom-row{
+	position: relative;
+}
+
 .bottom-cr{
 	display: block;
 	font-size: 10pt;
@@ -81,9 +90,12 @@ div.bar.three{
 }
 
 .contact-section{
-	float:right;
+	/*float:right;*/
+	position: absolute;
+	top:-20px;
+	right:10px;
 	width:105px;
-	margin-top: 4px;
+	/*margin-top: 4px;*/
 
 }
 
@@ -142,12 +154,25 @@ body{
 	background-color: black;
 }
 
-.background{
+img.background{
 	position:fixed;
 	width:100%;
 	height:100%;
 	opacity:0.5;
 	z-index: -1;
+}
+
+video.background{
+	position: fixed;
+	opacity:0.5;
+	min-height: 100%;
+  min-width: 1920px;
+	width: 100%;
+  height:auto;
+  top:0;
+  left:0;
+  z-index:-100;
+  filter:contrast(125%);
 }
 
 
@@ -161,7 +186,11 @@ canvas#triforce{
 }
 
 #canvas-holder{
-	position: relative;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	/*position: relative;*/
 	width:720px;
 	display:block;
 	margin: 0 auto;
@@ -179,9 +208,26 @@ canvas#triforce{
 	opacity: 0.7;
 }*/
 
+/*.cloud{
+	opacity: 0;
+	position: fixed;
+	width:80%;
+	height:auto;
+	top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  transition: opacity 500ms;
+}*/
+
 .about{
   right: 304px;
   top: 160px;
+}
+
+.about-cloud{
+	width:75%;
+	top: 50%;
+  left: 52%;
 }
 
 .work{
@@ -189,9 +235,23 @@ canvas#triforce{
   bottom: 74px;
 }
 
+.work-cloud{
+	width:70%;
+	top: 50%;
+  left: 49%;
+}
+
 .blog{
 	right:160px;
 	bottom:74px;
+}
+
+.cloud{
+	opacity: 0;
+	height:auto;
+	position: fixed;
+	transform: translate(-50%, -50%);
+  transition: opacity 500ms;
 }
 
 
@@ -228,7 +288,7 @@ img.test{
 
 .panel{
 	border: 1px white solid;
-	margin:34px 0 3% 0;
+	margin:37% 0 3% 0;
 	min-height: 589px;
 	background-color:transparent;
 }

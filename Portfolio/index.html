@@ -8,7 +8,7 @@
 
   <!--jCanvas CDN-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Oswald" rel="stylesheet">
@@ -18,69 +18,46 @@
 
 <body>
 <!--placeholder background image-->
-<img class="background" src="https://cdn.pixabay.com/photo/2017/02/10/22/14/city-2056465_960_720.jpg">
+	<!-- <img class="background" src="https://cdn.pixabay.com/photo/2017/02/10/22/14/city-2056465_960_720.jpg"> -->
+	<video class="background" autoplay muted loop>
+		<source src="./assets/media/portfolio_video_2.mp4" type="video/mp4" autoplay muted loop>
+	</video>
+
+	<img class="about-cloud cloud" src="./assets/media/about-wordcloud.png">
+	<img class="work-cloud cloud" src="./assets/media/work-wordcloud.png">
 
 <!--header-->
 	<header class='fixed -header'>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-offset-1 col-lg-1">
- 					<div class="brand">RHUI.</div>
-					<span class="line"></span>
-				</div>
-				<div class="col-lg-offset-8 col-lg-1">
-					<span class="menu" title="Menu">
-						<div class="bar one"></div>
-						<div class="bar two"></div>
-						<div class="bar three"></div>
-					</span>
-				</div>
-			</div>
-		</div>
+
+		<div class="brand">RHUI.</div>
+		<span class="line"></span>
+
+		<span class="menu" title="Menu">
+			<div class="bar one"></div>
+			<div class="bar two"></div>
+			<div class="bar three"></div>
+		</span>
 	</header>
 	 
 	<!--<div>Add Video shit to background</div>-->
 
-	<div class="container-fluid flex-container">
-
-		<div class="col-lg-3">
-			<div class="left panel"> 
-				<p>Latest Updates Feed</p><br>
-				<p>*9/4 - Learned about Flexboxes + Transitions + min-height</p>
-				<p>https://www.w3schools.com/css/css3_flexbox.asp</p>
-				<p>https://stackoverflow.com/questions/31896444/flexbox-align-items-stretch-not-stretching-low-content-div</p><br>
-				<p>*9/4 - Updated Portfolio - Now with white white icons in footer + flexbox side divs in center</p>
-				<br>
-				<p>*9/5 - Completed intro page for front end project for class. Needs to be updated.</p>
-			</div>
-		</div>
-
-		<div class="col-lg-6">
-			<div id="canvas-holder"> <!--w620 h545-->
-				<canvas id="triforce" width='720' height='645'></canvas>
-				<img class='red test' src='./assets/media/red_image.png'>
-				<img class='blue test' src='./assets/media/blue_image.png'>
-				<img class='green test' src='./assets/media/green_image.png'>
-			</div>
-		</div>
-
-		<div class="col-lg-3">
-			<div class="right panel"> 
-				<p>idk just needed for symmetry...fun stuff? </p>
-			</div>
-		</div>
-
-	</div> <!--container-fluid-->
+<!-- Main page nav -->
+	<div id="canvas-holder"> <!--w620 h545-->
+		<canvas id="triforce" width='720' height='645'></canvas>
+		<img class='red test' src='./assets/media/red_image.png'>
+		<img class='blue test' src='./assets/media/blue_image.png'>
+		<img class='green test' src='./assets/media/green_image.png'>
+	</div>
 
 
 <!--footer-->
 	<footer class='fixed -footer'>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-offset-1 col-lg-2">
+		<!-- <div class="container-fluid"> -->
+			<div class="bottom-row">
+				<!-- <div class="col-lg-offset-1 col-lg-2"> -->
 					<div class="bottom-cr">	&copy; Raymond Hui 2017</div>
-				</div>
-				<div class="col-lg-offset-6 col-lg-2">
+				<!-- </div> -->
+				<!-- <div class="col-lg-offset-6 col-lg-2"> -->
 					<div class="contact-section">
 						<div class="contacts">Contact Me</div>
 						<div class='icon-holder'>
@@ -89,9 +66,9 @@
 							<a href="mailto:rwhui.tech@gmail.com"><img class='icon email' src="./assets/media/mail_icon.png" title="E-mail"></a>
 						</div>
 					</div>
-				</div>
+				<!-- </div> -->
 			</div>
-		</div>
+		<!-- </div> -->
 	</footer>
 
 
@@ -109,16 +86,17 @@
 		click: function() { 
 			window.location.assign("https://www.w3schools.com"); 
 		},
-
 		mouseover: function() {
    		$('canvas').animateLayer('triTop', { strokeWidth: 18, y:21, opacity: 1, strokeStyle: '#CF0123' }, 350 
    			).animateLayer('about', { y:176, opacity: 1 }, 500);
    		$('#triforce').css('cursor','pointer');
+   		$('.about-cloud').css('opacity', 0.7);
   	},
 
   	mouseout: function(){ //about hover }
 			$('canvas').animateLayer('triTop', { strokeWidth: 12, y:65, opacity: 0.55, strokeStyle: 'white' }, 350 
-				).animateLayer('about', { y:220, opacity: 0 }, 500);
+				).animateLayer('about', { y:220, opacity: 0 }, 500);   		
+			$('.about-cloud').css('opacity', 0);
 		} //outfunction
 
 	}).drawVector({
@@ -156,11 +134,13 @@
 			$('canvas').animateLayer('triLeft', { strokeWidth: 18, strokeStyle: '#0E7FD6', x:16, y:613, opacity: 1 }, 350 
 				).animateLayer('work', { x: 166, y: 516, opacity: 1 }, 500);
 			$('#triforce').css('cursor','pointer');
+			$('.work-cloud').css('opacity', 0.7);
 		},
 
 	  mouseout: function(){
 			$('canvas').animateLayer('triLeft', { strokeWidth: 12, strokeStyle: 'white', x:60, y:585, opacity: 0.55 }, 350 
 				).animateLayer('work', { x: 210, y: 500, opacity: 0 }, 500);
+			$('.work-cloud').css('opacity', 0);
 		}
 
 	}).drawText({
@@ -257,7 +237,15 @@
 	// 		$('canvas').animateLayer('triRight', { strokeWidth: 12, x:660, y:585, opacity: 0.6 }, 500 );
 	// 	});
 
+ //    $(".canvas-holder").on("mouseenter mouseleave", ".red", function (e) {
+	// 	  if (e.type == "mouseenter") {
+	// 	    console.log('in');
 
+	// 	  } else {
+	// 	    // if not, mouseleave, do something
+	// 	    console.log('out')
+	// 	  }
+	// }); 
 
 
 </script>
