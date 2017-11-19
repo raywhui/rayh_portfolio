@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RH. - About</title>
+  <!--What is the difference between a frontend framework and a boilerplate?-->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+  <!--jCanvas CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>
+  <link rel="stylesheet" type="text/css" href="./public/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./public/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Oswald" rel="stylesheet">
+</head>
+
+
+<body class='scroll'>
+<!--placeholder background image-->
+  <img class="background" src="https://cdn.pixabay.com/photo/2017/02/10/22/14/city-2056465_960_720.jpg">
+  <img class="about-cloud cloud" src="./public/media/about-wordcloud.png">
+  <img class="work-cloud cloud" src="./public/media/work-wordcloud.png">
+
+<!--header-->
+  <header class='fixed -header'>
+
+    <div class="brand">RHUI.</div>
+    <span class="line"></span>
+
+    <span class="menu" title="Menu">
+      <div class="bar one"></div>
+      <div class="bar two"></div>
+      <div class="bar three"></div>
+    </span>
+  </header>
+   
+  <!--<div>Add Video shit to background</div>-->
+
+  <div class="container">
+    <div class="scroll-1">
+      <h2>"No matter when it came, the wind carried the same thing [...] But the winds that blew across the green fields of Hyrule brought something other than suffering and ruin. I coveted that wind, I suppose. It can only be called fate..."</h2> <br>
+      <span class="author"> - <span class="red-text">Ganondorf</span>, The Legend of Zelda: The Wind Waker</span>
+    </div>
+
+    <div class='scroll-2'>
+      <img src='./public/media/profile.png' class='profile'>
+      <div class="about-details">
+        <div class='red-text'>Hey! Listen!</div>
+        <p>I'm Raymond! A web developer based in the Bay Area. A passionate web designer. A University of California, Davis alumni. A UCBX Full Stack Coding Program graduate. A video game hobbyist. A part time hip-hop dancer. A tech enthusiast. A hardcore Zelda fan. And a student of life.</p> 
+      </div>
+    </div>
+
+    <div class='scroll-3'>
+      <img src='./public/media/funny.png' class='funsies-pic'>
+      <div class="what-i-do-details">
+        <div class='red-text'>What Do I Do?</div>
+        <p>I like to make websites! Modern and sleek, with as much personality as I can fit into it. My goal is to create websites that are clean and beautiful, while conveying its purpose and message. As a developer, I can create websites and applications that will run across both desktop and mobile devices.</p> 
+      </div>
+    </div>
+
+    <div class='scroll-4'>
+      <div class="contact-me">
+        <div class='red-text'>Interested?</div>
+        <p>I'm available for hire! Message me.</p>
+        <p>Email: rwhui.tech@gmail.com</p>
+        <p>LinkedIn: www.linkedin.com/in/raywhui</p><br>
+        <img src='./public/media/link_hi.gif' class='link-gif'>
+      </div>
+    </div>
+
+  </div> <!--container-->
+
+  <div class='mouse-decorations'>
+    <div class='mouse-line left'></div><img src='./public/media/mouse_icon.png' class= 'mouse-icon'><div class='mouse-line right'></div>
+  </div>
+  
+
+<!--footer-->
+  <footer class='fixed -footer'>
+    <!-- <div class="container-fluid"> -->
+      <div class="bottom-row">
+        <!-- <div class="col-lg-offset-1 col-lg-2"> -->
+          <div class="bottom-cr"> &copy; Raymond Hui 2017</div>
+        <!-- </div> -->
+        <!-- <div class="col-lg-offset-6 col-lg-2"> -->
+          <div class="contact-section">
+            <div class="contacts">Contact Me</div>
+            <div class='icon-holder'>
+              <a href="https://github.com/raywhui" target="_blank"><img class='github icon' src="./public/media/github_icon.svg" title="GitHub"></a>
+              <a href="https://www.linkedin.com/in/raymond-hui-ba5a0a11a/" target="_blank"><img class='linkedin icon' src="./public/media/linkedin_icon.png" title="LinkedIn"></a>
+              <a href="mailto:rwhui.tech@gmail.com"><img class='icon email' src="./public/media/mail_icon.png" title="E-mail"></a>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    <!-- </div> -->
+  </footer>
+
+
+<script>    
+
+  var scroll = 1;
+
+  $('html').on('mousewheel','.scroll' ,function(e){
+    var delta = e.originalEvent.wheelDelta;
+
+    console.log(delta);
+
+    if ((scroll === 1 && delta < 0)|| 
+      (scroll === 2 && delta < 0) || (scroll === 2 && delta > 0) ||
+      (scroll === 3 && delta < 0) || (scroll === 3 && delta > 0) ||
+      scroll === 4 && delta > 0){
+      $('body').removeClass('scroll'); //prevent scroll stacking
+
+      setTimeout(function(){ //readd class to bring back scroll functinality
+        $('body').addClass('scroll');
+        console.log('scroll #', scroll);
+      },2000);
+
+
+      if (delta < 0) { //if scroll down
+
+        if(scroll === 1){
+          $('.scroll-1').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-2').css('opacity',1);
+            scroll++;
+          },1000);
+          
+
+        }else if(scroll === 2){
+          $('.scroll-2').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-3').css('opacity',1);
+            scroll++;
+          },1000);
+
+        }else if(scroll === 3){
+          $('.scroll-3').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-4').css('opacity',1);
+            scroll++;
+          },1000);
+
+          console.log('scroll down');
+        };
+
+      } else if (delta > 0) { //if scroll up
+
+        if(scroll === 2){
+          $('.scroll-2').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-1').css('opacity',1); 
+            scroll--; 
+          },1000);
+
+        }else if (scroll === 3){
+          $('.scroll-3').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-2').css('opacity',1);
+            scroll--;  
+          },1000);
+
+        }else if (scroll === 4){
+          $('.scroll-4').css('opacity',0);
+          setTimeout(function(){
+            $('.scroll-3').css('opacity',1);
+            scroll--;  
+          },1000);
+
+        console.log('scroll up');
+
+        };
+
+      };
+    };
+  });
+
+
+</script>
+
+
+
+</body>
+</html>
