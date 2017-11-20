@@ -8,7 +8,9 @@ canvas#landing{
   left: 50%;
   transform: translate(-50%, -50%);
   border:rgba(256,256,256,0.5) 1px solid;
+  transition: opacity 500ms;
 }
+
 
 /*Header and Footer Fixed*/
 body{
@@ -17,11 +19,12 @@ body{
 	overflow: hidden;
 }
 
-div.main-page{
-	display: none;
+div.main-page{ /*#########################################################################*/
+	display: none; 
 }
 
 .fixed{
+	position: relative;
 	font-family: 'Oswald', sans-serif;
 	height:100px;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -31,6 +34,7 @@ div.main-page{
 /*Header*/
 .-header{
 	border-bottom: white 1px solid;
+	/*top: -101px;*/
 }
 
 .brand{
@@ -91,9 +95,10 @@ div.bar.three{
 
 /*Footer*/
 .-footer{
-	position:fixed;
+	position: fixed;
 	width:100%;
-	bottom:0;
+	/*bottom:-101px;*/
+	bottom: 0;	
 	border-top: white 1px solid;
 }
 
@@ -183,9 +188,10 @@ img.background{
 	z-index: -1;
 }
 
-video.background{
+video#background{
 	position: fixed;
-	opacity:0.65;
+	/*opacity:0.65;*/
+	opacity:0;
 	min-height: 100%;
   min-width: 1920px;
 	width: 100%;
@@ -194,6 +200,61 @@ video.background{
   left:0;
   z-index:-100;
   filter:contrast(125%);
+  transition: opacity 1s;
+}
+
+/*Background Written Words*/
+img.background-words{
+	height: 150px;
+	position: absolute;
+	z-index: -99;
+	opacity: 0;
+	transition: opacity 500ms;
+}
+
+img.background-hey{
+	top:125px;
+	left:50px;
+	transform: rotate(-10deg);
+}
+
+img.background-welcome{
+	top:190px;
+	left:20px;
+	transform: rotate(-17deg);
+}
+
+img.background-click{
+	top:245px;
+	left:-10px;
+	transform: rotate(-20deg);
+}
+
+img.background-about{
+	top:50px;
+	right:-50px;
+	height: 100px;
+	/*transform: rotate(-20deg);*/
+}
+
+img.background-works{
+	bottom:50px;
+	left:-375px;
+	height: 125px;
+	/*transform: rotate(-20deg);*/
+}
+img.background-blog{
+	bottom:125px;
+	right:-100px;
+	height: 200px;
+	/*transform: rotate(-20deg);*/
+}
+
+img.sheikah-eye{
+  height: 225px;
+  top: 66%;
+  left: 49%;
+	transform: translate(-50%,-50%);
 }
 
 
@@ -274,12 +335,14 @@ canvas#triforce{
 
 
 /*Triangle Images*/
-img.test{
+img.test{ /*#########################################################################*/
 	width: 291px; 
 	height: 257px;
 	position:absolute;
 	clip-path: polygon(50% 0, 0% 100%, 100% 100%);
 	z-index: -1;
+	transition: opacity 1s;
+	opacity: 0;
 }
 
 .red{
@@ -310,6 +373,8 @@ img.test{
 	min-height: 589px;
 	background-color:transparent;
 }
+
+
 
 /*About Page*/
 .container{
