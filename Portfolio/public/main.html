@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RH.</title>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>  <!--jCanvas CDN-->
+
+  <!-- local server testing -->
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  
+	<link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Oswald" rel="stylesheet">
+</head>
+
+
+<body>
+
+	<div class="main-page">
+	<video id="background" muted loop>
+		<source src="./media/portfolio_video_2.mp4" type="video/mp4">
+	</video>
+
+<!--header-->
+	<header class='fixed -header'>
+
+		<div class="brand">RHUI.</div>
+		<span class="line"></span>
+
+		<span class="menu" title="Menu">
+			<div class="bar one"></div>
+			<div class="bar two"></div>
+			<div class="bar three"></div>
+		</span>
+	</header>
+
+	<div class="triangle-fade">
+
+		<!-- Wordclouds -->
+		<img class="about-cloud cloud" src="./media/about-wordcloud.png">
+		<img class="work-cloud cloud" src="./media/work-wordcloud.png">
+		<img class="blog-cloud cloud" src="./media/blog-wordcloud.png">
+
+		<!-- Written background words -->
+		<img class="background-words background-hey" src="./media/background_words.png">
+		<img class="background-words background-welcome" src="./media/background_words2.png">
+		<img class="background-words background-click" src="./media/background_words3.png">
+		<img class="background-words background-index-1" src="./media/background_index_1.png">
+		<img class="background-words background-index-2" src="./media/background_index_2.png">
+		<img class="background-words background-index-3" src="./media/background_index_3.png">
+
+	<!-- Main page nav -->
+		<div id="canvas-holder"> <!--w620 h545-->
+			<canvas id="triforce" width='720' height='645'></canvas>
+			<img class='red test' src='./media/red_image.png'>
+			<img class='blue test' src='./media/blue_image.png'>
+			<img class='green test' src='./media/green_image.png'>
+
+			<!-- About,works, and blog written background words -->
+			<img class="background-words background-about" src="./media/background_words_about.png">
+			<img class="background-words background-works" src="./media/background_words_works.png">
+			<img class="background-words background-blog" src="./media/background_words_blog.png">
+			<img class="background-words sheikah-eye" src="./media/sheikah_eye.png">
+		</div>
+
+
+	</div>
+
+<!--footer-->
+	<footer class='fixed -footer'>
+		<!-- <div class="container-fluid"> -->
+			<div class="bottom-row">
+				<!-- <div class="col-lg-offset-1 col-lg-2"> -->
+					<div class="bottom-cr">	&copy; Raymond Hui 2017. All Rights Reserved.</div>
+				<!-- </div> -->
+				<!-- <div class="col-lg-offset-6 col-lg-2"> -->
+					<div class="contact-section">
+						<div class="contacts">Contact Me</div>
+						<div class='icon-holder'>
+							<a href="https://github.com/raywhui" target="_blank"><img class='github icon' src="./media/github_icon.svg" title="GitHub"></a>
+							<a href="https://www.linkedin.com/in/raymond-hui-ba5a0a11a/" target="_blank"><img class='linkedin icon' src="./media/linkedin_icon.png" title="LinkedIn"></a>
+							<a href="mailto:rwhui.tech@gmail.com"><img class='icon email' src="./media/mail_icon.png" title="E-mail"></a>
+						</div>
+					</div>
+				<!-- </div> -->
+			</div>
+		<!-- </div> -->
+	</footer>
+
+</div>	<!--main-page-->
+
+
+<script type="text/javascript" src="./js/transition-main.js"></script>
+<script type="text/javascript" src="./js/triforce.js"></script>
+
+
+</body>
+</html>

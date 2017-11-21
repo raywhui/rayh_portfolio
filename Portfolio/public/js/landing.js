@@ -1,61 +1,10 @@
 	// Canvas Landing
-	//grab video id to play when fadein
-	var play = document.getElementById('background');
-
-	function mainPageFadeIn(){
-		$('.-header').animate({
-			top:'0px'
-		},1000);
-
-		$('.-footer').animate({
-			bottom:'0px'
-		},1000);
-
-		setTimeout(function(){ //triangle fadein
-			$('.test.red').css('opacity',1);
-			setTimeout(function(){
-				$('.test.blue').css('opacity',1);
-			},500);
-			setTimeout(function(){
-				$('.test.green').css('opacity',1);
-			},1000);
-			setTimeout(function(){
-				//Animate Triforce layer
-				$('canvas#triforce').animateLayerGroup('triforce', {
-				 	l1:300
-				},1250).animateLayerGroup('triforce', {
-					l2:300
-				},1250).animateLayerGroup('triforce', {
-					l3:300
-				},1250).animateLayerGroup('triforce', {
-					opacity: 0.55,
-					closed:true,
-				}).animateLayerGroup('words', {
-					opacity:0
-				},4250);
-
-				setTimeout(function(){
-					$('img.background-about, img.background-blog, img.background-works, img.sheikah-eye').css('opacity', 0.9);
-				},3850);
-
-				$('video#background').css('opacity',0.65); //fadein video background
-				play.play(); //play video
-
-				$('img.background-hey, img.background-welcome, img.background-click').css('opacity',1);
-			},2000);
-
-		},1000);//triangle fadein
-	};
-
+	
 	function brandFade(letter,opacity,time){	//Fade effect of letters on landing	
 		$('canvas#landing').animateLayer(letter, { 
 			opacity:opacity
 		},time);
 	}
-
-	//intially moves header and footer for animation, needed for animation, but to also maintain fixed place in other pages
-	$('.-header').css('top','-101px');
-	$('.-footer').css('bottom','-101px');
 
 
 	$('canvas#landing').drawLine({ //Angles are always default 0 degrees, not relative.
@@ -154,8 +103,8 @@
 	var loading = setInterval(function(){ //Loading animation
 		$('canvas#landing').animateLayer('load', {
       rotate: '+=120'
-    },1250);
-	},1250);
+    },650);
+	},650);
 
 	//After main page is fully rendered, allow access to site
 	$(window).on("load", function(){ 
@@ -191,7 +140,6 @@
 		  click: function(){
 
 		  	// ################################################################
-		  	console.log('swags');
 		  	// $('canvas#landing').css('display','none');
 		  	// $('body .main-page').css('display','block');
 
@@ -237,8 +185,14 @@
 					$('canvas#landing').css('opacity',0);
 					setTimeout(function(){
 						$('canvas#landing').css('display','none');
-						$('body .main-page').css('display','block');
-						mainPageFadeIn();
+						// $('body .main-page').css('display','block');
+
+						//node test
+						window.location.assign("/main");
+
+						//local nonserver testing
+						// window.location.assign("./index.html");
+
 					},500);
 				},1500);
 
@@ -273,6 +227,6 @@
 		},1500);
 
 
-		},1000)//debug
+		},2500)//debug
 	});
 

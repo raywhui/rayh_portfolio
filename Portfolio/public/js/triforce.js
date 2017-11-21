@@ -9,7 +9,18 @@
 		a2:270, l2:0,
 		a3:30, l3:0,
 		click: function() { 
-			window.location.assign("./portfolio_about.html"); 
+			$('video#background, div.triangle-fade').css('opacity',0);
+			$('body').css('background-color', '#CF0123');
+
+			setTimeout(function(){
+					$('video#background, div.triangle-fade').css('display','none');
+
+					// local non server testing
+					// window.location.assign("./portfolio_about.html");
+
+					// node testing
+					window.location.assign("/about");
+			},1000);	 
 		},
 		mouseover: function() {
    		$('canvas#triforce').animateLayer('triTop', { strokeWidth: 18, y:21, opacity: 1, strokeStyle: '#CF0123' }, 350 
@@ -117,55 +128,3 @@
 	  // 	window.location.assign("https://www.w3schools.com");
 	  // }
 });
-
-// WHERE ANIMATE TRIFORCE WAS
-// ######################################################
-
-
-// #####################################################
-
-
-	//drawText
-	// $('canvas').drawText({
-	// 	fillStyle: '#9cf',
-	// 	strokeStyle: '#25a',
-	// 	strokeWidth: 2,
-	// 	x: 150, y: 100,
-	// 	fontSize: 48,
-	// 	fontFamily: 'Verdana, sans-serif',
-	// 	text: 'Hello'
-	// });
-
-
-//infunction, outfunction
-	//about hover
-	// $('.about').hover(function(){
-	// 	$('canvas').animateLayer('triTop', { strokeWidth: 18, y:21, opacity: 1 }, 500 );
-	// }, function(){ //about hover }
-	// 	$('canvas').animateLayer('triTop', { strokeWidth: 12, y:65, opacity: 0.55 }, 500 );
-	// 	} //outfunction
-	// );//about function		
-	
-	//work hover
-	// $('.work').hover(function(){
-	// 	$('canvas').animateLayer('triLeft', { strokeWidth: 18, x:16, y:629, opacity: 1 }, 500 );
-	// 	}, function(){
-	// 		$('canvas').animateLayer('triLeft', { strokeWidth: 12, x:60, y:585, opacity: 0.6 }, 500 );
-	// 	});
-
-	//blog hover
-	// $('.blog').hover(function(){
-	// 	$('canvas').animateLayer('triRight', { strokeWidth: 18, x:704, y:629, opacity: 1 }, 500 );
-	// 	}, function(){
-	// 		$('canvas').animateLayer('triRight', { strokeWidth: 12, x:660, y:585, opacity: 0.6 }, 500 );
-	// 	});
-
- //    $(".canvas-holder").on("mouseenter mouseleave", ".red", function (e) {
-	// 	  if (e.type == "mouseenter") {
-	// 	    console.log('in');
-
-	// 	  } else {
-	// 	    // if not, mouseleave, do something
-	// 	    console.log('out')
-	// 	  }
-	// }); 
