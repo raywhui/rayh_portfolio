@@ -206,7 +206,7 @@ div.triangle-fade{
 
 
 /*Background Written Words*/
-img.background-words{
+img.background-words, img.sheikah-eye-hover{
 	height: 150px;
 	position: absolute;
 	z-index: -99;
@@ -273,8 +273,20 @@ img.sheikah-eye{
   top: 66%;
   left: 49%;
 	transform: translate(-50%,-50%);
+	z-index: 2;
+-webkit-clip-path: polygon(0 14%, 100% 14%, 70% 100%, 50% 100%);
+clip-path: polygon(0 14%, 100% 14%, 70% 100%, 50% 100%);
 }
+img.sheikah-eye-hover{
+	height: 225px;
+  top: 66%;
+  left: 49%;
+	transform: translate(-50%,-50%);
+-webkit-clip-path: polygon(0 14%, 100% 14%, 70% 100%, 50% 100%);
+clip-path: polygon(0 14%, 100% 14%, 70% 100%, 50% 100%);
+	z-index: 1;
 
+}
 
 /*Triforce Canvas White*/
 canvas#triforce{	
@@ -405,9 +417,24 @@ body.scroll{
 	transition: background-color 1s;
 }
 
-body.scroll .background{
+html.about .background{
+	position: fixed;
+	opacity:0.65;
+	/*opacity:0.5;*/
+	min-height: 100%;
+  min-width: 1440px;
+	width: 100%;
+  height:auto;
+  top:0;
+  left:0;
+  z-index:-100;
+  /*filter:contrast(125%);*/
+  transition: opacity 1s;
+}
+
+html.about .background.tea, html.about .background.selfie, html.about .background.cypher, html.about .background.computer{
 	opacity: 0;
-	transition: opacity 1s;
+/*	display: none;*/
 }
 
 .container{
@@ -423,8 +450,8 @@ body.scroll .background{
 
 .container, .mouse-icon, .mouse-line{
 	transition: opacity 500ms;
-	opacity: 0;
-	display: none;
+	opacity: 1; /*FINAL ###################################### OPACITY 0*/
+	/*display: none;*/ /*FINAL ###################################### DISPLAY NONE*/
 }
 
 .container .scroll-1{
@@ -575,48 +602,83 @@ clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%,
 	bottom:32px;
 }
 
+/*WORKS PAGE*/
+.blue-text{
+	color: #0E7FD6;
+}
 
 
 
 /*MENU COLOR ANIMATIONS*/
+/*Main Page*/
+	/*If transition from about*/
+	.main-page .about-transition .one{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 100ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#CF0123 50%,
+	              		#CF0123);
+	}.main-page .about-transition .two{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 200ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#CF0123 50%,
+	              		#CF0123);
+	}.main-page .about-transition .three{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 300ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#CF0123 50%,
+	              		#CF0123);
+	}
 
-/*About Page*/
-html.about .one{
-	background-position: 100% 0;
-  background-size: 200% 100%;
-  transition: all 100ms ease-in;
-  background-image: linear-gradient(to left,
-              		transparent,
-              		transparent 50%,
-              		#CF0123 50%,
-              		#CF0123);
-}html.about .two{
-	background-position: 100% 0;
-  background-size: 200% 100%;
-  transition: all 200ms ease-in;
-  background-image: linear-gradient(to left,
-              		transparent,
-              		transparent 50%,
-              		#0E7FD6 50%,
-              		#0E7FD6);
-}html.about .three{
-	background-position: 100% 0;
-  background-size: 200% 100%;
-  transition: all 300ms ease-in;
-  background-image: linear-gradient(to left,
-              		transparent,
-              		transparent 50%,
-              		#0AB831 50%,
-              		#0AB831);
-}
+
+	/*About Page*/
+	html.about .one{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 100ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#CF0123 50%,
+	              		#CF0123);
+	}html.about .two{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 200ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#0E7FD6 50%,
+	              		#0E7FD6);
+	}html.about .three{
+		background-position: 100% 0;
+	  background-size: 200% 100%;
+	  transition: all 300ms ease-in;
+	  background-image: linear-gradient(to left,
+	              		transparent,
+	              		transparent 50%,
+	              		#0AB831 50%,
+	              		#0AB831);
+	}
 
 
-html.about .menu:hover .one{
-	background-position: 0 0;
-}
-html.about .menu:hover .two{
-	background-position: 0 0;
-}
-html.about .menu:hover .three{
-	background-position: 0 0;
-}
+	html .menu:hover .one{
+		background-position: 0 0;
+	}
+	html .menu:hover .two{
+		background-position: 0 0;
+	}
+	html .menu:hover .three{
+		background-position: 0 0;
+	}

@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 3000;
 // Middleware
 // ===========================================================
 app.use(express.static(path.join(__dirname, './public')));
-app.use(function(req,res,next){setTimeout(next,5000)});
+// app.use(function(req,res,next){setTimeout(next,5000)});
 
 
 // Routing
@@ -28,13 +28,8 @@ app.get("/about", function(req, res) {
   res.sendFile(path.join(__dirname,'./public/portfolio_about.html'));
 });
 
-app.get("/darthmaul", function(req, res) {
-  res.json(darthmaul);
-});
-
-//USE POST REQUEST TO ADD CLASS TO HTML OF MAIN + REDIRECT PAGE ON SUCCESS
-app.post('/main', function(req, res){ 
-  res.sendFile(path.join(__dirname,'./public/main.html'));	
+app.get("/page+return", function(req, res) {
+  res.json(req.params.pageReturn);
 });
 
 // Listener

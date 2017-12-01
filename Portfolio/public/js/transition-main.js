@@ -1,5 +1,7 @@
 //grab video id to play when fadein
 	var play = document.getElementById('background');
+	var menuPageChange = localStorage.getItem('rhui-returnPage');
+	console.log(menuPageChange);
 
 	function mainPageFadeIn(){
 		$('.-header').animate({
@@ -34,7 +36,7 @@
 			},4250);
 
 			setTimeout(function(){
-				$('img.background-about, img.background-blog, img.background-works, img.sheikah-eye').css('opacity', 0.9);
+				$('img.background-about, img.background-blog, img.background-works, img.sheikah-eye').css('opacity', 1);
 			},3850);
 
 			$('video#background').css('opacity',0.65); //fadein video background
@@ -45,10 +47,66 @@
 		},1250);//triangle fadein
 	};
 
+	function menuTransition(backgroundColor, URL){
+		$('video#background, div.triangle-fade').css('opacity',0);
+		$('body').css('background-color', backgroundColor);
+		setTimeout(function(){
+			$('video#background, div.triangle-fade').css('display','none');
+
+			// local non server testing
+			// window.location.assign("./portfolio_about.html");
+
+			// node testing
+			window.location.assign(URL);
+		},1000);	
+	};
+
+//Transition from About, work, or blog
+function outerToMainFadeIn(){
+	$('.test.red').css('opacity',1);
+	$('.test.blue').css('opacity',1);
+	$('.test.green').css('opacity',1);
+
+	$('img.background-about, img.background-blog, img.background-works, img.sheikah-eye').css('opacity', 1);
+	$('video#background').css('opacity',0.65); //fadein video background
+	play.play(); //play video
+	$('img.background-hey, img.background-welcome, img.background-click, img.background-index-1, img.background-index-2,img.background-index-3').css('opacity',1);
+};
+
+
 //intially moves header and footer for animation, needed for animation, but to also maintain fixed place in other pages
-$('.-header').css('top','-101px');
-$('.-footer').css('bottom','-101px');
+
+
+
+//Set header/footer changes before window loads for smooth transition effect.
+	if (menuPageChange === 'about' || menuPageChange === 'works'){
+		$('.-header').css('top','0px');
+		$('.-footer').css('bottom','0px');
+
+	}else{
+		$('.-header').css('top','-101px');
+		$('.-footer').css('bottom','-101px');
+	}
+
 
 $(window).on("load",function(){
-	mainPageFadeIn();
+	if (menuPageChange === 'about'){
+		$('.menu').addClass('about-transition');
+		outerToMainFadeIn();
+
+	}else if (menuPageChange === 'works'){
+		$('.menu').addClass('work-transition');
+
+	}else{
+		mainPageFadeIn();
+	}
+});
+
+//Menu Transitions to return to previous page
+$('body .main-page').on('click','.menu.about-transition',function(){
+	menuTransition('#CF0123','./about');
+});
+
+$('body .main-page').on('click','.menu.works-transition',function(){
+	menuTransition('#CF0123','./works');
 });

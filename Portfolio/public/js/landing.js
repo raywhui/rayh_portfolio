@@ -6,6 +6,10 @@
 		},time);
 	}
 
+  if (localStorage.getItem('rhui-returnPage')){
+		localStorage.removeItem('rhui-returnPage');
+	};
+
 
 	$('canvas#landing').drawLine({ //Angles are always default 0 degrees, not relative.
   	layer:true,
@@ -138,7 +142,6 @@
 		    }, 200);
 		  },
 		  click: function(){
-
 		  	// ################################################################
 		  	// $('canvas#landing').css('display','none');
 		  	// $('body .main-page').css('display','block');
