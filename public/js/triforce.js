@@ -9,7 +9,7 @@
 			console.log(secret);
 			secret = undefined;
 		});
-	},15000);
+	},10000);
 
 
 

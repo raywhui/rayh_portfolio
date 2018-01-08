@@ -28,6 +28,10 @@ app.get("/about", function(req, res) {
   res.sendFile(path.join(__dirname,'./public/portfolio_about.html'));
 });
 
+app.get("/works", function(req, res) {
+  res.sendFile(path.join(__dirname,'./public/portfolio_works.html'));
+});
+
 app.get("/page+return", function(req, res) {
   res.json(req.params.pageReturn);
 });

@@ -71,6 +71,18 @@ function outerToMainFadeIn(){
 	$('video#background').css('opacity',0.65); //fadein video background
 	play.play(); //play video
 	$('img.background-hey, img.background-welcome, img.background-click, img.background-index-1, img.background-index-2,img.background-index-3').css('opacity',1);
+	$('canvas#triforce').animateLayerGroup('triforce', {
+			 	l1:300
+			},1250).animateLayerGroup('triforce', {
+				l2:300
+			},1250).animateLayerGroup('triforce', {
+				l3:300
+			},1250).animateLayerGroup('triforce', {
+				opacity: 0.55,
+				closed:true,
+			}).animateLayerGroup('words', {
+				opacity:0
+			},4250);
 };
 
 
