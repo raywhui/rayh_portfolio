@@ -115,6 +115,7 @@
 
   <div class='mouse-decorations'>
     <div class='mouse-line left'></div><img src='./media/mouse_icon.png' class='mouse-icon'><div class='mouse-line right'></div>
+    <img class="scroll-how-to" src="./media/scroll.png">
   </div>
 
 
@@ -144,6 +145,7 @@
   var vid1 = document.getElementById('juikebox');
   var vid2 = document.getElementById('sockswap');
   var vid3 = document.getElementById('loz');
+
   //Transition
   $(window).on("load", function(){ 
     $('body.scroll .street').css('opacity',0.65);
@@ -154,6 +156,24 @@
     },750);
   });
 
+  //Transition logic
+  $('header').on('click','.menu',function(){
+    $('body.scroll .background').css('opacity',0);
+    $('body.scroll').css('background-color', '#0E7FD6');
+    $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css('opacity', 0);
+    setTimeout(function(){
+      $('.container, .mouse-icon, .mouse-line').css("display", "none");
+      // local non server testing
+        // window.location.assign("./main.html");
+        localStorage.setItem('rhui-returnPage', 'works');
+        window.location.assign("/main");
+      },750);
+      // node testing
+  });
+
+
+
+  //Work scrolling logic
   var scroll = 1;
 
   $('html').on('mousewheel','.scroll' ,function(e){

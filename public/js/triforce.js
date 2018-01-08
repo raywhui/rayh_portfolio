@@ -64,6 +64,20 @@
 		a1:270, l1:0,
 		a2:30, l2:0,
 		a3:150, l3:0,
+		click: function() { 
+			$('video#background, div.triangle-fade').css('opacity',0);
+			$('body').css('background-color', '#0AB831');
+
+			setTimeout(function(){
+					$('video#background, div.triangle-fade').css('display','none');
+
+					// local non server testing
+					// window.location.assign("./portfolio_about.html");
+
+					// node testing
+					window.location = "https://rwhui.wordpress.com/";
+			},1000);	 
+		},
 		mouseover:function(){
 			$('canvas#triforce').animateLayer('triRight', { strokeWidth: 18, strokeStyle: '#0AB831', x:704, y:613, opacity: 1 }, 350 
 				)
@@ -91,6 +105,20 @@
 		a1:30, l1:0, //44  
 		a2:150, l2:0,
 		a3:270, l3:0,
+		click: function() { 
+			$('video#background, div.triangle-fade').css('opacity',0);
+			$('body').css('background-color', '#0E7FD6');
+
+			setTimeout(function(){
+					$('video#background, div.triangle-fade').css('display','none');
+
+					// local non server testing
+					// window.location.assign("./portfolio_about.html");
+
+					// node testing
+					window.location.assign("/works");
+			},1000);	 
+		},
 		mouseover:function(){
 			$('canvas#triforce').animateLayer('triLeft', { strokeWidth: 18, strokeStyle: '#0E7FD6', x:16, y:613, opacity: 1 }, 350 
 				)

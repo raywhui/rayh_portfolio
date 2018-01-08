@@ -75,6 +75,7 @@
 
   <div class='mouse-decorations'>
     <div class='mouse-line left'></div><img src='./media/mouse_icon.png' class= 'mouse-icon'><div class='mouse-line right'></div>
+    <img class="scroll-how-to" src="./media/scroll.png">
   </div>
   
 
@@ -107,14 +108,14 @@
     $('body.scroll').css('background-color','black');
     $('.container, .mouse-icon, .mouse-line').css("display", "block");
     setTimeout(function(){
-      $('.container, .mouse-icon, .mouse-line').css('opacity', 1);
+      $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css('opacity', 1);
     },750);
   });
 
   $('header').on('click','.menu',function(){
     $('body.scroll .background').css('opacity',0);
     $('body.scroll').css('background-color', '#CF0123');
-    $('.container, .mouse-icon, .mouse-line').css('opacity', 0);
+    $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css('opacity', 0);
     setTimeout(function(){
       $('.container, .mouse-icon, .mouse-line').css("display", "none");
       // local non server testing

@@ -107,7 +107,8 @@ $(window).on("load",function(){
 		outerToMainFadeIn();
 
 	}else if (menuPageChange === 'works'){
-		$('.menu').addClass('work-transition');
+		$('.menu').addClass('works-transition');
+		outerToMainFadeIn();
 
 	}else{
 		mainPageFadeIn();
@@ -120,5 +121,5 @@ $('body .main-page').on('click','.menu.about-transition',function(){
 });
 
 $('body .main-page').on('click','.menu.works-transition',function(){
-	menuTransition('#CF0123','./works');
+	menuTransition('#0E7FD6','./works');
 });
