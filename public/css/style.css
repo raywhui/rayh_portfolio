@@ -822,3 +822,25 @@ html.works .container .scroll-5{
 	html .menu:hover .three{
 		background-position: 0 0;
 	}
+
+
+/*Media Queries*/
+/* Medium Devices, Desktops */
+@media only screen and (max-width:1200px) and (min-width:992px) {
+	
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
