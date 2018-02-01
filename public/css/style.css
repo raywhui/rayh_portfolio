@@ -826,8 +826,39 @@ html.works .container .scroll-5{
 
 /*Media Queries*/
 /* Medium Devices, Desktops */
-@media only screen and (max-width:1200px) and (min-width:992px) {
-	
+@media only screen and (max-width:1200px) and (min-width:900px) {
+	img.background-words{
+		height: 150px;
+	}
+
+	img.background-works {
+    bottom: 135px;
+    left: -220px;
+    height: 100px;
+    /* transform: rotate(-20deg); */
+	}
+
+
+	#canvas-holder{
+		transform: translate(-50%, -50%) scale(0.75,0.75);
+	}
+	img.background-index-1 {
+    top: 100px;
+    right: 50px;
+    height: 175px;
+	}
+
+	img.background-index-2 {
+    bottom: 125px;
+    right: 20px;
+    height: 125px;
+	}
+
+	img.background-index-3 {
+    bottom: 500px;
+    right: 50px;
+    height: 125px;
+	}
 }
 
 /* Small Devices, Tablets */
