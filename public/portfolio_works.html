@@ -148,7 +148,7 @@
 
   //Transition
   $(window).on("load", function(){ 
-    $('body.scroll .street').css('opacity',0.65);
+    $('html.works .street').css('opacity',0.75);
     $('body.scroll').css('background-color','black');
     $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css("display", "block");
     setTimeout(function(){
@@ -205,7 +205,7 @@
       }
       $(leave).css('display','none');
       $(appear).css('opacity',1);
-      $(backgroundAppear).css('opacity',1);
+      $(backgroundAppear).css('opacity',0.75);
       //prevent scroll passing +1
       if (scroll === scrollNum && delta === -1){
         scroll++;
@@ -214,7 +214,6 @@
         scroll--;
         console.log(scroll, 'scroll up');
       };
-      addScrollEvent();
     },500);
   }
 
@@ -222,9 +221,13 @@
   function MouseWheelHandler(e){
     console.log(scrollEvent.removeEventListener)
     //removeEventListener must remove the same function that is referenced in addEventListener
-    if (scrollEvent.removeEventListener && delta){
+    if (scrollEvent.removeEventListener){
       scrollEvent.removeEventListener("wheel", MouseWheelHandler, false);
-    }
+      //add back scroll eventlistener
+      setTimeout(function(){
+        addScrollEvent();
+      }, 750);
+    };
 
     // cross-browser wheel delta
     var e = window.event || e; // old IE support
