@@ -175,137 +175,277 @@
 
   //Work scrolling logic
   var scroll = 1;
+  var myitem = document.getElementsByClassName("scroll")[0];
 
-  $('html').on('mousewheel','.scroll' ,function(e){
-    var delta = e.originalEvent.wheelDelta;
-    console.log(delta)
+  if (myitem.addEventListener){
+      // IE9, Chrome, Safari, Opera
+      myitem.addEventListener("mousewheel", MouseWheelHandler, false);
+      // Firefox
+      myitem.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+  }
+  // IE 6/7/8
+  else{
+    myitem.attachEvent("onmousewheel", MouseWheelHandler);
+  }
 
-    if ((scroll === 1 && delta < 0)|| 
-        (scroll === 2 && delta < 0)|| 
-        (scroll === 2 && delta > 0)||
-        (scroll === 3 && delta < 0)|| 
-        (scroll === 3 && delta > 0)||
-        (scroll === 4 && delta > 0)|| 
-        (scroll === 4 && delta < 0)|| 
-        (scroll === 5 && delta > 0)) {
-
-      $('body').removeClass('scroll'); //prevent scroll stacking
-
-      setTimeout(function(){ //readd class to bring back scroll functinality
-        $('body').addClass('scroll');
-        console.log('scroll #', scroll);
-      },1000);
-
-
-      if (delta < 0) { //if scroll down
-
-        if(scroll === 1){
-          // $('')
-          $('.scroll-1').css('opacity',0);
-          $('.scroll-2').css('display','block');
-          $('.works .street').css('opacity',0);
-          setTimeout(function(){
-            $('.scroll-1').css('display','none');
-            $('.scroll-2').css('opacity',1);
-            $('.works-juikebox').css('opacity',1);
-            vid1.play();
-            scroll++;
-          },500);
-
-        }else if(scroll === 2){
-          $('.scroll-2').css('opacity',0);
-          $('.scroll-3').css('display','block');
-          $('.works-juikebox').css('opacity',0);
-          setTimeout(function(){
-            vid1.pause();
-            $('.scroll-2').css('display','none');
-            $('.scroll-3').css('opacity',1);
-            $('.works-sockswap').css('opacity',1);
-            vid2.play();
-            scroll++;
-          },500);
-
-        }else if(scroll === 3){
-          $('.scroll-3').css('opacity',0);
-          $('.works-sockswap').css('opacity',0);
-          $('.scroll-4').css('display','block');
-          setTimeout(function(){
-            vid2.pause();
-            $('.scroll-3').css('display','none');
-            $('.scroll-4').css('opacity',1);
-            $('.works-loz').css('opacity',1);
-            vid3.play();
-            scroll++;
-          },500);
-
-        }else if(scroll === 4){
-          $('.scroll-4').css('opacity',0);
-          $('.works-loz').css('opacity',0);
-          $('.scroll-5').css('display','block');
-          setTimeout(function(){
-            vid3.pause();
-            $('.works .fireworks').css('opacity',1);
-            $('.scroll-4').css('display','none');
-            $('.scroll-5').css('opacity',1);
-            scroll++;
-          },500);
-        };
-
-      } else if (delta > 0) { //if scroll up
-
-        if(scroll === 2){
-          $('.scroll-2').css('opacity',0);
-          $('.works-juikebox').css('opacity', 0);
-          setTimeout(function(){
-            vid1.pause();
-            $('.scroll-1').css('display','block');
-            $('.works .street').css('opacity',1);
-            $('.scroll-2').css('display','none');
-            $('.scroll-1').css('opacity',1); 
-            scroll--; 
-          },500);
-
-        }else if (scroll === 3){
-          $('.scroll-3').css('opacity',0);
-          $('.works-sockswap').css('opacity', 0);
-          $('.scroll-2').css('display','block');
-          setTimeout(function(){
-            vid2.pause();
-            $('.scroll-2').css('opacity',1);
-            $('.works-juikebox').css('opacity', 1);
-            $('.scroll-3').css('display','none');
-            vid1.play();
-            scroll--;  
-          },500);
-
-        }else if (scroll === 4){
-          $('.scroll-4').css('opacity',0);
-          $('.works-loz').css('opacity', 0);
-          $('.scroll-3').css('display','block');
-          setTimeout(function(){
-            vid3.pause();
-            $('.scroll-3').css('opacity',1);
-            $('.works-sockswap').css('opacity', 1);
-            $('.scroll-4').css('display','none');
-            vid2.play();
-            scroll--;  
-          },500);
-
-        }else if (scroll === 5){
-          $('.scroll-5').css('opacity',0);
-          $('.scroll-4').css('display','block');
-          $('.works .fireworks').css('opacity',0);
-          setTimeout(function(){
-            $('.scroll-4').css('opacity',1);
-            $('.works-loz').css('opacity', 1);
-            $('.scroll-5').css('display','none');
-            vid3.play();
-            scroll--;  
-          },500);
-        };
+  function pageTransition(delta, leave, appear, backgroundLeave, backgroundAppear, vidPause, vidPlay, scrollNum){
+    //remove delta to prevent scroll stacking
+    delta = "";
+    $(leave).css('opacity', 0);
+    $(appear).css('display','block');
+    $(backgroundLeave).css('opacity',0);
+    setTimeout(function(){
+      if (vidPause !== undefined){
+        vidPause.pause();
+        console.log(vidPause.id + 'paused');
+      }
+      if (vidPlay !== undefined){
+        vidPlay.play();
+        console.log(vidPlay.id + "played");
+      }
+      $(leave).css('display','none');
+      $(appear).css('opacity',1);
+      $(backgroundAppear).css('opacity',1);
+      //prevent scroll passing +1
+      if (scroll === scrollNum && delta === -1){
+        scroll++;
+        console.log(scroll, 'scroll down');
+      }else if (scroll ===scrollNum && delta === 1){
+        scroll--;
+        console.log(scroll, 'scroll up');
       };
-    };
-  });
+      $('body').addClass('scroll');
+    },500);
+  }
+
+
+  function MouseWheelHandler(e){
+    $('body').removeClass('scroll'); //prevent scroll stacking
+
+    // cross-browser wheel delta
+    var e = window.event || e; // old IE support
+    var delta = Math.max(-1, Math.min(1, (-e.deltaY || -e.detail)));
+    console.log('delta Y:', e.deltaY);
+    console.log('delta Detail:', e.detail);
+
+      if(scroll === 1 && delta === -1){
+        //transition page 1 -> 2
+        return pageTransition(delta, '.scroll-1', '.scroll-2', '.works .street', '.works-juikebox', undefined, vid1, 1);
+      }else if(scroll === 2 && delta === -1){
+         //transition page 2 -> 3
+        return pageTransition(delta, '.scroll-2', '.scroll-3', '.works-juikebox', '.works-sockswap', vid1, vid2, 2);
+
+      }else if(scroll === 3 && delta === -1){
+         //transition page 3 -> 4
+        return pageTransition(delta, '.scroll-3', '.scroll-4', '.works-sockswap', '.works-loz', vid2, vid3, 3);
+
+      }else if(scroll === 4 && delta === -1){
+         //transition page 4 -> 5
+        return pageTransition(delta, '.scroll-4', '.scroll-5', '.works-loz', '.works .fireworks', vid3, undefined, 4);
+
+      }else if(scroll === 2 && delta === 1){
+         //transition page 2 -> 1
+         return pageTransition(delta, '.scroll-2', '.scroll-1', '.works-juikebox', '.works .street', vid1, undefined, 2);
+
+      }else if(scroll === 3 && delta === 1){
+         //transition page 3 -> 2
+         return pageTransition(delta, '.scroll-3', '.scroll-2', '.works-sockswap', '.works-juikebox', vid2, vid1, 3);
+      };
+
+        // if(scroll === 2){
+        //   $('.scroll-2').css('opacity',0);
+        //   $('.works-juikebox').css('opacity', 0);
+        //   setTimeout(function(){
+        //     vid1.pause();
+        //     $('.scroll-1').css('display','block');
+        //     $('.works .street').css('opacity',1);
+        //     $('.scroll-2').css('display','none');
+        //     $('.scroll-1').css('opacity',1); 
+        //     scroll--; 
+        //   },500);
+
+        // }else if (scroll === 3){
+        //   $('.scroll-3').css('opacity',0);
+        //   $('.works-sockswap').css('opacity', 0);
+        //   $('.scroll-2').css('display','block');
+        //   setTimeout(function(){
+        //     vid2.pause();
+        //     $('.scroll-2').css('opacity',1);
+        //     $('.works-juikebox').css('opacity', 1);
+        //     $('.scroll-3').css('display','none');
+        //     vid1.play();
+        //     scroll--;  
+        //   },500);
+
+        // }else if (scroll === 4){
+        //   $('.scroll-4').css('opacity',0);
+        //   $('.works-loz').css('opacity', 0);
+        //   $('.scroll-3').css('display','block');
+        //   setTimeout(function(){
+        //     vid3.pause();
+        //     $('.scroll-3').css('opacity',1);
+        //     $('.works-sockswap').css('opacity', 1);
+        //     $('.scroll-4').css('display','none');
+        //     vid2.play();
+        //     scroll--;  
+        //   },500);
+
+        // }else if (scroll === 5){
+        //   $('.scroll-5').css('opacity',0);
+        //   $('.scroll-4').css('display','block');
+        //   $('.works .fireworks').css('opacity',0);
+        //   setTimeout(function(){
+        //     $('.scroll-4').css('opacity',1);
+        //     $('.works-loz').css('opacity', 1);
+        //     $('.scroll-5').css('display','none');
+        //     vid3.play();
+        //     scroll--;  
+        //   },500);
+
+
+
+
+
+
+
+
+
+
+    return false;
+  };
+
+
+  // $('html').bind('wheel','.scroll' ,function(e){
+  //   e.preventDefault();
+  //   // var delta = e.deltaX;
+  //   console.log(e.deltaX);
+
+  //   if ((scroll === 1 && delta < 0)|| 
+  //       (scroll === 2 && delta < 0)|| 
+  //       (scroll === 2 && delta > 0)||
+  //       (scroll === 3 && delta < 0)|| 
+  //       (scroll === 3 && delta > 0)||
+  //       (scroll === 4 && delta > 0)|| 
+  //       (scroll === 4 && delta < 0)|| 
+  //       (scroll === 5 && delta > 0)) {
+
+  //     $('body').removeClass('scroll'); //prevent scroll stacking
+
+  //     setTimeout(function(){ //readd class to bring back scroll functinality
+  //       $('body').addClass('scroll');
+  //       console.log('scroll #', scroll);
+  //     },1000);
+
+
+      // if (delta < 0) { //if scroll down
+
+      //   if(scroll === 1){
+      //     // $('')
+      //     $('.scroll-1').css('opacity',0);
+      //     $('.scroll-2').css('display','block');
+      //     $('.works .street').css('opacity',0);
+      //     setTimeout(function(){
+      //       $('.scroll-1').css('display','none');
+      //       $('.scroll-2').css('opacity',1);
+      //       $('.works-juikebox').css('opacity',1);
+      //       vid1.play();
+      //       scroll++;
+      //     },500);
+
+      //   }else if(scroll === 2){
+      //     $('.scroll-2').css('opacity',0);
+      //     $('.scroll-3').css('display','block');
+      //     $('.works-juikebox').css('opacity',0);
+      //     setTimeout(function(){
+      //       vid1.pause();
+      //       $('.scroll-2').css('display','none');
+      //       $('.scroll-3').css('opacity',1);
+      //       $('.works-sockswap').css('opacity',1);
+      //       vid2.play();
+      //       scroll++;
+      //     },500);
+
+      //   }else if(scroll === 3){
+      //     $('.scroll-3').css('opacity',0);
+      //     $('.works-sockswap').css('opacity',0);
+      //     $('.scroll-4').css('display','block');
+      //     setTimeout(function(){
+      //       vid2.pause();
+      //       $('.scroll-3').css('display','none');
+      //       $('.scroll-4').css('opacity',1);
+      //       $('.works-loz').css('opacity',1);
+      //       vid3.play();
+      //       scroll++;
+      //     },500);
+
+      //   }else if(scroll === 4){
+      //     $('.scroll-4').css('opacity',0);
+      //     $('.works-loz').css('opacity',0);
+      //     $('.scroll-5').css('display','block');
+      //     setTimeout(function(){
+      //       vid3.pause();
+      //       $('.works .fireworks').css('opacity',1);
+      //       $('.scroll-4').css('display','none');
+      //       $('.scroll-5').css('opacity',1);
+      //       scroll++;
+      //     },500);
+      //   };
+
+      // } else if (delta > 0) { //if scroll up
+
+      //   if(scroll === 2){
+      //     $('.scroll-2').css('opacity',0);
+      //     $('.works-juikebox').css('opacity', 0);
+      //     setTimeout(function(){
+      //       vid1.pause();
+      //       $('.scroll-1').css('display','block');
+      //       $('.works .street').css('opacity',1);
+      //       $('.scroll-2').css('display','none');
+      //       $('.scroll-1').css('opacity',1); 
+      //       scroll--; 
+      //     },500);
+
+      //   }else if (scroll === 3){
+      //     $('.scroll-3').css('opacity',0);
+      //     $('.works-sockswap').css('opacity', 0);
+      //     $('.scroll-2').css('display','block');
+      //     setTimeout(function(){
+      //       vid2.pause();
+      //       $('.scroll-2').css('opacity',1);
+      //       $('.works-juikebox').css('opacity', 1);
+      //       $('.scroll-3').css('display','none');
+      //       vid1.play();
+      //       scroll--;  
+      //     },500);
+
+      //   }else if (scroll === 4){
+      //     $('.scroll-4').css('opacity',0);
+      //     $('.works-loz').css('opacity', 0);
+      //     $('.scroll-3').css('display','block');
+      //     setTimeout(function(){
+      //       vid3.pause();
+      //       $('.scroll-3').css('opacity',1);
+      //       $('.works-sockswap').css('opacity', 1);
+      //       $('.scroll-4').css('display','none');
+      //       vid2.play();
+      //       scroll--;  
+      //     },500);
+
+      //   }else if (scroll === 5){
+      //     $('.scroll-5').css('opacity',0);
+      //     $('.scroll-4').css('display','block');
+      //     $('.works .fireworks').css('opacity',0);
+      //     setTimeout(function(){
+      //       $('.scroll-4').css('opacity',1);
+      //       $('.works-loz').css('opacity', 1);
+      //       $('.scroll-5').css('display','none');
+      //       vid3.play();
+      //       scroll--;  
+      //     },500);
+      //   };
+      // };
+  //   };
+  // });
 
   </script>
 
