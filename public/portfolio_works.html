@@ -14,7 +14,7 @@
 </head>
 
 
-<body class='scroll'>
+<body id='scroll'>
   <img class="background street" src="./media/works_page/street.jpg">
   <div class='works-juikebox'>
     <video class='background' id='juikebox' muted loop>
@@ -175,22 +175,22 @@
 
   //Work scrolling logic
   var scroll = 1;
-  var myitem = document.getElementsByClassName("scroll")[0];
+  var scrollEvent = $('#scroll')[0];
 
-  if (myitem.addEventListener){
+  function addScrollEvent(){
+    console.log(scrollEvent)
+    if (scrollEvent.addEventListener){
       // IE9, Chrome, Safari, Opera
-      myitem.addEventListener("mousewheel", MouseWheelHandler, false);
-      // Firefox
-      myitem.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
-  }
-  // IE 6/7/8
-  else{
-    myitem.attachEvent("onmousewheel", MouseWheelHandler);
-  }
+      scrollEvent.addEventListener("wheel", MouseWheelHandler, false);
+    }
+    // IE 6/7/8
+    else{
+      scrollEvent.attachEvent("onmousewheel", MouseWheelHandler);
+    };
+  };
 
   function pageTransition(delta, leave, appear, backgroundLeave, backgroundAppear, vidPause, vidPlay, scrollNum){
     //remove delta to prevent scroll stacking
-    delta = "";
     $(leave).css('opacity', 0);
     $(appear).css('display','block');
     $(backgroundLeave).css('opacity',0);
@@ -214,17 +214,21 @@
         scroll--;
         console.log(scroll, 'scroll up');
       };
-      $('body').addClass('scroll');
+      addScrollEvent();
     },500);
   }
 
 
   function MouseWheelHandler(e){
-    $('body').removeClass('scroll'); //prevent scroll stacking
+    console.log(scrollEvent.removeEventListener)
+    //removeEventListener must remove the same function that is referenced in addEventListener
+    if (scrollEvent.removeEventListener && delta){
+      scrollEvent.removeEventListener("wheel", MouseWheelHandler, false);
+    }
 
     // cross-browser wheel delta
     var e = window.event || e; // old IE support
-    var delta = Math.max(-1, Math.min(1, (-e.deltaY || -e.detail)));
+    var delta = Math.max(-1, Math.min(1, (-e.deltaY)));
     console.log('delta Y:', e.deltaY);
     console.log('delta Detail:', e.detail);
 
@@ -313,6 +317,8 @@
 
     return false;
   };
+
+  addScrollEvent();
 
 
   // $('html').bind('wheel','.scroll' ,function(e){
