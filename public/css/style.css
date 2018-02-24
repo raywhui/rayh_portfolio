@@ -37,7 +37,9 @@ div.main-page{ /*###############################################################
 /*Header*/
 .-header{
 	border-bottom: white 1px solid;
-	/*top: -101px;*/
+	position: fixed;
+	width:100%;
+	top:0;
 }
 
 .brand{
@@ -444,7 +446,7 @@ html.about .background.tea, html.about .background.selfie, html.about .backgroun
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-	width:70%;
+	min-width:1200px;
 	text-shadow: 2px 2px 1px black;
 }
 
@@ -836,6 +838,10 @@ html.works .container .scroll-5{
     left: -220px;
     height: 100px;
     /* transform: rotate(-20deg); */
+	}
+
+	.container{
+		min-width: 100%;
 	}
 
 

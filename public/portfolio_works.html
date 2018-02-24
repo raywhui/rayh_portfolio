@@ -2,6 +2,7 @@
 <html class="works">
 <head>
 	<title>RH. - Works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jcanvas/20.1.2/jcanvas.js"></script>  <!--jCanvas CDN-->
@@ -15,6 +16,7 @@
 
 
 <body id='scroll'>
+  <!-- backgrounds -->
   <img class="background street" src="./media/works_page/street.jpg">
   <div class='works-juikebox'>
     <video class='background' id='juikebox' muted loop>
@@ -34,9 +36,7 @@
   <img class="background fireworks" src="./media/works_page/fireworks.jpg">
   
 
-
-
-<!--header-->
+  <!--header-->
 	<header class='fixed -header'>
 
 		<div class="brand">RHUI.</div>
@@ -50,16 +50,15 @@
 	</header>
 
 
-
+  <!-- texts -->
   <div class="container">
     <div class="scroll-1">
       <h2>"...You may not be at a point where you have fully recovered your power or all of your memories, but courage need not be remembered, for it is never forgotten."</h2> <br>
       <span class="author"> - <span class="blue-text">Zelda</span>, The Legend of Zelda: Breath of the Wild</span>
     </div>
 
-<!-- SHould be scroll-2 -->
+    <!-- scroll-2 -->
     <div class='scroll-2'> 
-
       <div class='title'>
         <div>JuikeBox</div>
       </div>
@@ -72,9 +71,8 @@
 
     </div>
 
-<!-- SHould be scroll-3 -->
+    <!--scroll-3 -->
     <div class='scroll-3'> 
-
       <div class='title'>
         <div>SockSwap</div>
       </div>
@@ -87,8 +85,8 @@
 
     </div>
 
-<!-- SHould be scroll-4 -->
-  <div class='scroll-4'> 
+    <!--scroll-4 -->
+    <div class='scroll-4'> 
       <div class='title'>
         <div>Legend of Zelda: The Word Game</div>
       </div>
@@ -120,37 +118,31 @@
 
 
 	
-<!--footer-->
+  <!--footer-->
 	<footer class='fixed -footer'>
-		<!-- <div class="container-fluid"> -->
-			<div class="bottom-row">
-				<!-- <div class="col-lg-offset-1 col-lg-2"> -->
-					<div class="bottom-cr">	&copy; Raymond Hui 2017. All Rights Reserved.</div>
-				<!-- </div> -->
-				<!-- <div class="col-lg-offset-6 col-lg-2"> -->
-					<div class="contact-section">
-						<div class="contacts">Contact Me</div>
-						<div class='icon-holder'>
-							<a href="https://github.com/raywhui" target="_blank"><img class='github icon' src="./media/github_icon.svg" title="GitHub"></a>
-							<a href="https://www.linkedin.com/in/raymond-hui-ba5a0a11a/" target="_blank"><img class='linkedin icon' src="./media/linkedin_icon.png" title="LinkedIn"></a>
-							<a href="mailto:rwhui.tech@gmail.com"><img class='icon email' src="./media/mail_icon.png" title="E-mail"></a>
-						</div>
-					</div>
-				<!-- </div> -->
+		<div class="bottom-row">
+			<div class="bottom-cr">	&copy; Raymond Hui 2017. All Rights Reserved.</div>
+			<div class="contact-section">
+				<div class="contacts">Contact Me</div>
+				<div class='icon-holder'>
+					<a href="https://github.com/raywhui" target="_blank"><img class='github icon' src="./media/github_icon.svg" title="GitHub"></a>
+					<a href="https://www.linkedin.com/in/raymond-hui-ba5a0a11a/" target="_blank"><img class='linkedin icon' src="./media/linkedin_icon.png" title="LinkedIn"></a>
+					<a href="mailto:rwhui.tech@gmail.com"><img class='icon email' src="./media/mail_icon.png" title="E-mail"></a>
+				</div>
 			</div>
-		<!-- </div> -->
+		</div>
 	</footer>
 
   <script>
-  var vid1 = document.getElementById('juikebox');
-  var vid2 = document.getElementById('sockswap');
-  var vid3 = document.getElementById('loz');
-
-  var scroll = 1;
-  var scrollEvent = $('#scroll')[0];
+  const vid1 = document.getElementById('juikebox');
+  const vid2 = document.getElementById('sockswap');
+  const vid3 = document.getElementById('loz');
+  const scrollEvent = $('#scroll')[0];
+  let scroll = 1;
+  
 
   //Work scrolling logic
-  function addScrollEvent(){
+  addScrollEvent = () => {
     console.log(scrollEvent)
     if (scrollEvent.addEventListener){
       // IE9, Chrome, Safari, Opera
@@ -162,7 +154,7 @@
     };
   };
 
-  function pageTransition(delta, leave, appear, backgroundLeave, backgroundAppear, vidPause, vidPlay, scrollNum){
+  pageTransition = (delta, leave, appear, backgroundLeave, backgroundAppear, vidPause, vidPlay, scrollNum) => {
     //remove delta to prevent scroll stacking
     $(leave).css('opacity', 0);
     $(appear).css('display','block');
@@ -190,7 +182,7 @@
     },500);
   }
 
-  function MouseWheelHandler(e){
+  MouseWheelHandler = e => {
     console.log(scrollEvent.removeEventListener)
     //removeEventListener must remove the same function that is referenced in addEventListener
     if (scrollEvent.removeEventListener){
@@ -203,7 +195,7 @@
 
     // cross-browser wheel delta
     var e = window.event || e; // old IE support
-    var delta = Math.max(-1, Math.min(1, (-e.deltaY)));
+    let delta = Math.max(-1, Math.min(1, (-e.deltaY)));
     console.log('delta Y:', e.deltaY);
     console.log('delta Detail:', e.detail);
     console.log('delta rounded:', delta)
