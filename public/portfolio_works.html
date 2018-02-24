@@ -234,30 +234,41 @@
     var delta = Math.max(-1, Math.min(1, (-e.deltaY)));
     console.log('delta Y:', e.deltaY);
     console.log('delta Detail:', e.detail);
-
+    console.log('delta rounded:', delta)
+      //transition page 1 -> 2
       if(scroll === 1 && delta === -1){
-        //transition page 1 -> 2
         return pageTransition(delta, '.scroll-1', '.scroll-2', '.works .street', '.works-juikebox', undefined, vid1, 1);
+
+      //transition page 2 -> 3
       }else if(scroll === 2 && delta === -1){
-         //transition page 2 -> 3
         return pageTransition(delta, '.scroll-2', '.scroll-3', '.works-juikebox', '.works-sockswap', vid1, vid2, 2);
 
+      //transition page 3 -> 4
       }else if(scroll === 3 && delta === -1){
-         //transition page 3 -> 4
         return pageTransition(delta, '.scroll-3', '.scroll-4', '.works-sockswap', '.works-loz', vid2, vid3, 3);
 
+      //transition page 4 -> 5
       }else if(scroll === 4 && delta === -1){
-         //transition page 4 -> 5
         return pageTransition(delta, '.scroll-4', '.scroll-5', '.works-loz', '.works .fireworks', vid3, undefined, 4);
 
+      //transition page 2 -> 1
       }else if(scroll === 2 && delta === 1){
-         //transition page 2 -> 1
          return pageTransition(delta, '.scroll-2', '.scroll-1', '.works-juikebox', '.works .street', vid1, undefined, 2);
 
+      //transition page 3 -> 2
       }else if(scroll === 3 && delta === 1){
-         //transition page 3 -> 2
          return pageTransition(delta, '.scroll-3', '.scroll-2', '.works-sockswap', '.works-juikebox', vid2, vid1, 3);
+
+      //transition page 4 -> 3
+      }else if(scroll === 4 && delta === 1){
+         return pageTransition(delta, '.scroll-4', '.scroll-3', '.works-loz', '.works-sockswap', vid3, vid2, 4);
+
+      //transition page 5 -> 4   
+      }else if(scroll === 5 && delta === 1){
+         return pageTransition(delta, '.scroll-5', '.scroll-4', '.works .fireworks', '.works-loz', undefined, vid3, 5);
       };
+
+
 
         // if(scroll === 2){
         //   $('.scroll-2').css('opacity',0);
@@ -321,6 +332,7 @@
     return false;
   };
 
+  //initialize eventlistener
   addScrollEvent();
 
 
