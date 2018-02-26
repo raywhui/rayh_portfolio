@@ -1,0 +1,120 @@
+/*Media Queries*/
+
+/*MacBook Air 689px height*/
+@media only screen and (max-height:900px){
+	/*Homepage*/
+	#canvas-holder{
+		transform: translate(-50%, -50%) scale(0.75,0.75);
+	}
+
+	/*Works*/
+	.mouse-decorations{
+		transform: translate(-50%, 0%) scale(0.5);
+		bottom: 5%;
+		z-index: 1;
+		opacity: 0.5;
+		transition: opacity 0.25s; 
+	} 
+	.mouse-decorations:hover{
+		opacity: 1;
+	}
+
+	html.works .scroll-2, html.works .scroll-3,html.works .scroll-4,html.works .scroll-5{
+		transform: scale(0.75,0.75);	
+	}
+
+	.contact-me{
+		transform: translate(-50%, -45%);
+	}
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width:1200px){
+/*	img.background-words{
+		height: 150px;
+	}
+
+	img.background-works {
+    bottom: 135px;
+    left: -220px;
+    height: 100px;
+	}
+
+	#canvas-holder{
+		transform: translate(-50%, -50%) scale(0.75,0.75);
+	}
+
+	img.background-index-1 {
+    top: 100px;
+    right: 50px;
+    height: 175px;
+	}
+
+	img.background-index-2 {
+    bottom: 125px;
+    right: 20px;
+    height: 125px;
+	}
+
+	img.background-index-3 {
+    bottom: 500px;
+    right: 50px;
+    height: 125px; 
+	}
+*/
+	/*Works*/
+	.container{
+		min-width: 100%;
+		padding:20px;
+		text-align: center;
+	}
+
+}
+
+/*Small laptops - screens equal to or greater than 992px wide)*/
+@media only screen and (max-width : 992px) {
+	/*Works*/
+	.container{
+		font-size: 35pt;
+	}
+
+	/*loz project*/
+	html.works .scroll-4 .title{
+		font-size: 50pt;	
+	}
+
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	/*Works*/
+	.container{
+		font-size: 35pt;
+	}
+	.title{
+		font-size: 40pt;
+	}
+	html.works .description{
+		font-size: 20pt;
+	}
+}
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+
+}
+
+/*Custom Keyframe animations*/
+@keyframes fadeIn {
+    from { opacity: 0.75; }
+    to   { opacity: 1; }
+}

@@ -459,6 +459,7 @@ html.about .background.tea, html.about .background.selfie, html.about .backgroun
 .container .scroll-1{
 	opacity:1;
 	transition: opacity 500ms;
+	padding:35px;
 }
 
 .container .scroll-2{
@@ -559,6 +560,7 @@ clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%,
 	top:50%;
 	left:50%;
 	transform: translate(-50%, -50%);
+	min-width: 475px;
 }
 
 .contact-me p{
@@ -824,60 +826,3 @@ html.works .container .scroll-5{
 	html .menu:hover .three{
 		background-position: 0 0;
 	}
-
-
-/*Media Queries*/
-/* Medium Devices, Desktops */
-@media only screen and (max-width:1200px) and (min-width:900px) {
-	img.background-words{
-		height: 150px;
-	}
-
-	img.background-works {
-    bottom: 135px;
-    left: -220px;
-    height: 100px;
-    /* transform: rotate(-20deg); */
-	}
-
-	.container{
-		min-width: 100%;
-	}
-
-
-	#canvas-holder{
-		transform: translate(-50%, -50%) scale(0.75,0.75);
-	}
-	img.background-index-1 {
-    top: 100px;
-    right: 50px;
-    height: 175px;
-	}
-
-	img.background-index-2 {
-    bottom: 125px;
-    right: 20px;
-    height: 125px;
-	}
-
-	img.background-index-3 {
-    bottom: 500px;
-    right: 50px;
-    height: 125px; 
-	}
-}
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-
-}
-
-/* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
-
-}
-
-/* Custom, iPhone Retina */ 
-@media only screen and (min-width : 320px) {
-
-}
