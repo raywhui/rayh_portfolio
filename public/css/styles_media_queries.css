@@ -6,6 +6,59 @@
 	#canvas-holder{
 		transform: translate(-50%, -50%) scale(0.75,0.75);
 	}
+	img.background-words{
+		height: 100px;
+		z-index: 1;
+	}
+	img.sheikah-eye{
+		height: 225px;
+		z-index: 2;
+	}
+	img.background-hey{
+		top: 0px;
+		left: 33%;
+		transform: rotate(0deg);
+	}img.background-welcome{
+		top:0px;
+		left:41%;
+		transform: rotate(0deg);
+	}img.background-click{
+		top: initial;
+		bottom: 0px;
+		left: 50%;
+		transform: translate(-50%, 0%);
+	}
+
+	img.background-about {
+    top: 50px;
+    right: 0px;
+  }img.background-works {
+		bottom: 150px;
+		left: -250px;
+		height: 125px;
+  }img.background-blog{
+		bottom: 125px;
+		right: -45px;
+		height: 200px;
+	}
+
+	img.background-index-1 {
+		top: 130px;
+		right: 30px;
+		height: 250px;
+	}img.background-index-2 {
+		top: 130px;
+		bottom: initial;
+		right:initial;
+		left: 30px;
+		height: 200px;
+	}img.background-index-3 {
+		bottom: 100px;
+		right: 0px;
+		height: 200px;
+	}
+
+
 
 	/*Works*/
 	.mouse-decorations{
@@ -74,6 +127,18 @@
 
 /*Small laptops - screens equal to or greater than 992px wide)*/
 @media only screen and (max-width : 992px) {
+	img.background-index-1, img.background-index-2,
+	img.background-index-3{
+		display:none;
+	}
+
+	img.background-click{
+		width:50%;
+		transform: translate(-37%, 0%);
+	}
+
+
+
 	/*Works*/
 	.container{
 		font-size: 35pt;
@@ -89,6 +154,35 @@
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+	/*Homepage*/
+	img.background-about, img.background-works, 
+	img.background-blog{
+		display: none;
+	}
+	img.background-hey, img.background-welcome, 
+	img.background-click{
+		display: none;
+	}
+
+
+
+/*	img.background-hey{
+		top: 450px;
+		left: 41px;
+		transform: rotate(-54deg);
+	}img.background-welcome{
+		top: 230px;
+		left: 40px;
+		transform: rotate(-54deg);
+	}img.background-click{
+		bottom: 300px;
+		left: 45%;
+		transform: rotate(60deg);
+		height: 75px;
+		width:initial;
+	}*/
+
+
 	/*Works*/
 	.container{
 		font-size: 35pt;
