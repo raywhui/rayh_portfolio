@@ -92,13 +92,13 @@
     bottom: 135px;
     left: -220px;
     height: 100px;
-	}
+	}*/
 
 	#canvas-holder{
 		transform: translate(-50%, -50%) scale(0.75,0.75);
 	}
 
-	img.background-index-1 {
+/*	img.background-index-1 {
     top: 100px;
     right: 50px;
     height: 175px;
@@ -114,8 +114,8 @@
     bottom: 500px;
     right: 50px;
     height: 125px; 
-	}
-*/
+	}*/
+
 	/*Works*/
 	.container{
 		min-width: 100%;
@@ -195,6 +195,14 @@
 	}
 }
 
+
+@media only screen and (max-width : 992px) and (min-height: 901px){
+	img.background-click{
+		width: inherit;
+    transform: rotate(0deg);
+    top: initial;
+    bottom: 90px;
+	}
 }
 
 /* Extra Small Devices, Phones */ 

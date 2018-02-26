@@ -232,6 +232,7 @@ img.background-click{
 	top:245px;
 	left:-10px;
 	transform: rotate(-20deg);
+	z-index:1;
 }
 
 img.background-index-1{
