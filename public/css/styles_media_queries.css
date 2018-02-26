@@ -58,7 +58,10 @@
 		height: 200px;
 	}
 
-
+	/*About*/
+	html.about .container{
+		transform: translate(-50%, -50%) scale(0.75);
+	}
 
 	/*Works*/
 	.mouse-decorations{
@@ -116,6 +119,11 @@
     height: 125px; 
 	}*/
 
+	/*About*/
+	html.about .container{
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+
 	/*Works*/
 	.container{
 		min-width: 100%;
@@ -137,14 +145,21 @@
 		transform: translate(-37%, 0%);
 	}
 
+	/*About*/
+	.about-details{
+		transform: translate(-35%, -50%);
+	}
 
+	.what-i-do-details{
+		transform: translate(-70%, -50%);
+	}
 
 	/*Works*/
 	.container{
 		font-size: 35pt;
 	}
 
-	/*loz project*/
+	/*Works loz project*/
 	html.works .scroll-4 .title{
 		font-size: 50pt;	
 	}
@@ -201,6 +216,13 @@
     top: initial;
     bottom: 90px;
 	}
+
+	/*About*/
+	.funsies-pic {
+    right: -10%;
+  }
+  .what-i-do-details {
+    left: 48%;
 }
 
 /* Extra Small Devices, Phones */ 

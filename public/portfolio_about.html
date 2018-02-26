@@ -104,6 +104,7 @@
 
 
 <script>    
+  /*Future Features - Transition with red smoothly*/
   // About scrolling logic
   const scrollEvent = $('#scroll')[0];
   let scroll = 1;
@@ -181,7 +182,7 @@
     };
   };
 
-  //Transition
+  //Main->About Transition
   $(window).on("load", function(){ 
     $('body#scroll .tea').css('opacity',0.65);
     $('body#scroll').css('background-color','black');
@@ -193,6 +194,7 @@
     },750);
   });
 
+  //About->Main Transition
   $('header').on('click','.menu',function(){
     $('body#scroll .background').css('opacity',0);
     $('body#scroll').css('background-color', '#CF0123');
@@ -206,8 +208,6 @@
       },750);
       // node testing
   });
-
-
 
 </script>
 
