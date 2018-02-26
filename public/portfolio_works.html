@@ -181,7 +181,7 @@
         console.log(scroll, 'scroll up');
       };
     },500);
-  }
+  };
 
   MouseWheelHandler = e => {
     console.log(scrollEvent.removeEventListener)
@@ -239,7 +239,7 @@
   //Main->Works Transition 
   $(window).on("load", function(){ 
     $('html.works .street').css('opacity',0.75);
-    $('body.scroll').css('background-color','black');
+    $('body#scroll').css('background-color','black');
     $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css("display", "block");
     setTimeout(function(){
       $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css('opacity', 1);
@@ -250,8 +250,8 @@
 
   //Works->Main Transition
   $('header').on('click','.menu',function(){
-    $('body.scroll .background').css('opacity',0);
-    $('body.scroll').css('background-color', '#0E7FD6');
+    $('body#scroll .background').css('opacity',0);
+    $('body#scroll').css('background-color', '#0E7FD6');
     $('.container, .mouse-icon, .mouse-line, .scroll-how-to').css('opacity', 0);
     setTimeout(function(){
       $('.container, .mouse-icon, .mouse-line').css("display", "none");
