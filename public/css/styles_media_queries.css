@@ -1,5 +1,54 @@
 /*Media Queries*/
 
+/* Medium Devices, Desktops */
+@media only screen and (max-width:1200px){
+/*	img.background-words{
+		height: 150px;
+	}
+
+	img.background-works {
+    bottom: 135px;
+    left: -220px;
+    height: 100px;
+	}*/
+
+	#canvas-holder{
+		transform: translate(-50%, -50%) scale(0.75,0.75);
+	}
+
+/*	img.background-index-1 {
+    top: 100px;
+    right: 50px;
+    height: 175px;
+	}
+
+	img.background-index-2 {
+    bottom: 125px;
+    right: 20px;
+    height: 125px;
+	}
+
+	img.background-index-3 {
+    bottom: 500px;
+    right: 50px;
+    height: 125px; 
+	}*/
+
+	/*About*/
+	html.about .container{
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+
+	/*Works*/
+	.container{
+		min-width: 100%;
+		padding:20px;
+		text-align: center;
+	}
+
+}
+
+
 /*MacBook Air 689px height*/
 @media only screen and (max-height:900px){
 	/*Homepage*/
@@ -85,53 +134,6 @@
 }
 
 
-/* Medium Devices, Desktops */
-@media only screen and (max-width:1200px){
-/*	img.background-words{
-		height: 150px;
-	}
-
-	img.background-works {
-    bottom: 135px;
-    left: -220px;
-    height: 100px;
-	}*/
-
-	#canvas-holder{
-		transform: translate(-50%, -50%) scale(0.75,0.75);
-	}
-
-/*	img.background-index-1 {
-    top: 100px;
-    right: 50px;
-    height: 175px;
-	}
-
-	img.background-index-2 {
-    bottom: 125px;
-    right: 20px;
-    height: 125px;
-	}
-
-	img.background-index-3 {
-    bottom: 500px;
-    right: 50px;
-    height: 125px; 
-	}*/
-
-	/*About*/
-	html.about .container{
-		transform: translate(-50%, -50%) scale(0.9);
-	}
-
-	/*Works*/
-	.container{
-		min-width: 100%;
-		padding:20px;
-		text-align: center;
-	}
-
-}
 
 /*Small laptops - screens equal to or greater than 992px wide)*/
 @media only screen and (max-width : 992px) {
